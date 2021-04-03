@@ -120,6 +120,10 @@
               "devServerTarget": "text-clipboard-tool:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
