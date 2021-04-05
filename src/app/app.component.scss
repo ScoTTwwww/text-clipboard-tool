@@ -7,8 +7,9 @@
 
 
 .active {
+  background: #293865;
+  //border: 1.5px solid black;
   filter: drop-shadow(2px 4px 6px black);
-  background-color: #293865;
 
 
   nb-card-body {
@@ -18,4 +19,30 @@
     }
   }
 
+}
+
+
+nb-card {
+  cursor: pointer;
+  textarea, input {
+    cursor: pointer;
+  }
+}
+
+
+nb-layout-column {
+
+  .content {
+    display: flex;
+    gap: 25px;
+    .col-1 { flex: 1 }
+    .col-2 { flex: 2 }
+  }
+
+}
+
+
+.item-list {
+  position: sticky;
+    top: 2.25rem;
 }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbContextMenuModule, NbActionsModule, NbMenuModule, NbToastrModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbContextMenuModule, NbActionsModule, NbMenuModule, NbToastrModule, NbListModule, NbUserModule } from '@nebular/theme';
 import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     NbContextMenuModule,
     NbCardModule,
     NbButtonModule,
+    NbListModule,
+    NbUserModule,
     HttpClientModule,
     NbToastrModule.forRoot()
   ],

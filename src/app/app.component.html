@@ -1,24 +1,97 @@
-<nb-layout>
+<nb-layout #page>
 
-  <nb-layout-header fixed>
+  <!-- <nb-layout-header fixed>
     <nb-actions class="left">
       <nb-action class="profile" [nbContextMenu]="items" nbContextMenuPlacement="bottom">Profile</nb-action>
       <nb-action>Settings</nb-action>
     </nb-actions>
-  </nb-layout-header>
+  </nb-layout-header> -->
 
   <nb-layout-column>
-    <div class="row">
-      <div class="col-lg-6" *ngFor="let item of textList; let index = index" (click)="clickText(text, index)">
-        <nb-card [ngClass]="{ 'active': index == currentIndex }">
-          <nb-card-header>{{ item.title }} {{ index }}</nb-card-header>
-          <nb-card-body>
+    <div class="content">
+      <div class="row col-1">
 
-            <textarea [rows]="item.lineLength" nbinput="" fullwidth="" shape="round" placeholder="Text Area"
-              class="input-full-width size-medium status-basic shape-round nb-transition"
-              disabled> {{ item.content }}</textarea>
+        <nb-card class="item-list ">
+           <!-- <nb-card-header >xxx</nb-card-header> -->
+          <nb-card-body style="padding: 0;">
+            <nb-list role="list">
+              <nb-list-item role="listitem" class="ng-star-inserted active" (click)="zzzz()">
+                <nb-user class="size-medium shape-round">
+                  <div class="user-container">
+                    <!---->
+                    <div class="user-picture initials ng-star-inserted"> CE
+                      <!---->
+                      <!---->
+                      <!---->
+                    </div>
+                    <!---->
+                    <div class="info-container">
+                      <div class="user-name ng-star-inserted">Carla Espinosa</div>
+                      <!---->
+                      <div class="user-title ng-star-inserted">Nurse</div>
+                      <!---->
+                    </div>
+                  </div>
+                </nb-user>
+              </nb-list-item>
+              <nb-list-item role="listitem" class="ng-star-inserted">
+                <nb-user class="size-medium shape-round">
+                  <div class="user-container">
+                    <!---->
+                    <div class="user-picture initials ng-star-inserted"> BK
+                      <!---->
+                      <!---->
+                      <!---->
+                    </div>
+                    <!---->
+                    <div class="info-container">
+                      <div class="user-name ng-star-inserted">Bob Kelso</div>
+                      <!---->
+                      <div class="user-title ng-star-inserted">Doctor of Medicine</div>
+                      <!---->
+                    </div>
+                  </div>
+                </nb-user>
+              </nb-list-item>
+              <nb-list-item role="listitem" class="ng-star-inserted">
+                <nb-user class="size-medium shape-round">
+                  <div class="user-container">
+                    <!---->
+                    <div class="user-picture initials ng-star-inserted"> BK
+                      <!---->
+                      <!---->
+                      <!---->
+                    </div>
+                    <!---->
+                    <div class="info-container">
+                      <div class="user-name ng-star-inserted">Bob Kelso</div>
+                      <!---->
+                      <div class="user-title ng-star-inserted">Doctor of Medicine</div>
+                      <!---->
+                    </div>
+                  </div>
+                </nb-user>
+              </nb-list-item>
+
+              <!---->
+            </nb-list>
           </nb-card-body>
         </nb-card>
+      </div>
+
+      <div class="row col-2">
+        <div class="col-lg-6" *ngFor="let item of textList; let index = index" (click)="clickText(item.content, index)">
+          <nb-card [ngClass]="{ 'active': index == currentIndex }">
+            <nb-card-header>{{ item.title }} {{ index }}</nb-card-header>
+            <nb-card-body>
+
+              <textarea [rows]="item.lineLength" nbinput="" fullwidth="" shape="round" placeholder="Text Area"
+                class="input-full-width size-medium status-basic shape-round nb-transition"
+                disabled> {{ item.content }}</textarea>
+            </nb-card-body>
+          </nb-card>
+        </div>
+
       </div>
 
     </div>

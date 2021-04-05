@@ -67,7 +67,7 @@ export class AppComponent {
     });
     document.execCommand('copy');
 
-    this.showToast('bottom-end', 'success', `更新成功 !`);
+    this.showToast('bottom-end', 'success', `已複製 !`);
   }
 
   showToast(position, status, content) {
@@ -75,5 +75,9 @@ export class AppComponent {
       status || 'Success',
       content,
       { position, status });
+  }
+
+  zzzz() {
+    window.scrollTo(0, 0);
   }
 }
