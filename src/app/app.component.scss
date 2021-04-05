@@ -4,3 +4,18 @@
 .profile {
   cursor: pointer;
 }
+
+
+.active {
+  filter: drop-shadow(2px 4px 6px black);
+  background-color: #293865;
+
+
+  nb-card-body {
+    textarea, input {
+      // background-color: #1f2a4e;
+      color: #d2d1d1;
+    }
+  }
+
+}
