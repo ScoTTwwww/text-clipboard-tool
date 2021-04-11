@@ -1,9 +1,134 @@
-asdsadsadsadsad
+----------------------------------------
+  標題
+----------------------------------------
+sadsadsad
+
 =====================item=======================
-sadsad
+----------------------------------------
+  OneSignalNotificationService
+----------------------------------------
+import OneSignal
+
+class NotificationService: UNNotificationServiceExtension {
+
+    var contentHandler: ((UNNotificationContent) -> Void)?
+    var receivedRequest: UNNotificationRequest!
+    var bestAttemptContent: UNMutableNotificationContent?
+
+    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+        self.receivedRequest = request;
+        self.contentHandler = contentHandler
+        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+
+        if let bestAttemptContent = bestAttemptContent {
+            OneSignal.didReceiveNotificationExtensionRequest(self.receivedRequest, with: self.bestAttemptContent)
+            contentHandler(bestAttemptContent)
+        }
+    }
+
+    override func serviceExtensionTimeWillExpire() {
+        // Called just before the extension will be terminated by the system.
+        // Use this as an opportunity to deliver your "best attempt" at modified content, otherwise the original push payload will be used.
+        if let contentHandler = contentHandler, let bestAttemptContent =  bestAttemptContent {
+            OneSignal.serviceExtensionTimeWillExpireRequest(self.receivedRequest, with: self.bestAttemptContent)
+            contentHandler(bestAttemptContent)
+        }
+    }
+
+}
 =====================item=======================
-222
+----------------------------------------
+  標題
+----------------------------------------
+ target 'OneSignalNotificationService' do
+       pod 'OneSignal', '>= 2.11.2', '< 3.0'
+  end
 =====================item=======================
-4545
+----------------------------------------
+  標題
+----------------------------------------
+ pod 'GoogleSignIn', '< 5.0.0'
 =====================item=======================
-51515 你好
+----------------------------------------
+  標題
+----------------------------------------
+pod repo update
+pod install
+=====================item=======================
+----------------------------------------
+   開啟 A1AppTest.xcworkspace       (Classes資料夾/ AppDelegate.m)
+----------------------------------------
+
+/*
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements. See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership. The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied. See the License for the
+specific language governing permissions and limitations
+under the License.
+*/
+
+//
+// AppDelegate.m
+// A1PlusTest
+//
+// Created by __FULLUSERNAME__ on __DATE__.
+// Copyright __ORGANIZATIONNAME__ __YEAR__. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "MainViewController.h"
+#import <OneSignal/OneSignal.h>
+#import "GooglePlus.h"
+
+@implementation AppDelegate
+
+
+
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
+{
+self.viewController = [[MainViewController alloc] init];
+
+[OneSignal initWithLaunchOptions:launchOptions
+appId:@"584f8cff-218c-4942-986e-2e6c647faa93"
+handleNotificationAction:nil
+settings:@{kOSSettingsKeyAutoPrompt: @false, kOSSettingsKeyInAppLaunchURL: @false}];
+OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
+
+// promptForPushNotifications will show the native iOS notification permission prompt.
+// We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 8)
+[OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {
+NSLog(@"User accepted notifications: %d", accepted);
+}];
+return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+-(BOOL)application:(UIApplication*)application openURL:(NSURL*)url
+options:(NSDictionary *)options{
+return [[GIDSignIn sharedInstance] handleURL:url
+sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+annotation:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
+}
+=====================item=======================
+----------------------------------------
+   回 A1AppTest.xcodeproj
+----------------------------------------
+ALL-------------Build setting----swift language version---swift 4
+ALL-------------Build setting----Always Embed Swift Standard Libraries---No
+
+A1PlusTest------Build Phases-----Embed App Extensions-----copy only when installing勾勾
+=====================item=======================
+----------------------------------------
+    "Privacy – Bluetooth Always Usage Description
+----------------------------------------
+This application requires Bluetooth to make the connection stable for normal operation.
