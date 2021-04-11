@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build_push_github": "ng deploy --base-href=/text-clipboard-tool/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

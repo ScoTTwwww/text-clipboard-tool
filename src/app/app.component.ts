@@ -33,9 +33,9 @@ export class AppComponent {
         const dataList = [];
         list.forEach((item: any) => {
 
-          if (item.split('--------').length > 2) {
-            const title = item.split('--------')[1];
-            const content = item.split('--------')[2];
+          if (item.split('----------------------------------------').length > 2) {
+            const title = item.split('----------------------------------------')[1];
+            const content = item.split('----------------------------------------')[2];
             const lineLength = content.split("\n").length;
 
             dataList.push({

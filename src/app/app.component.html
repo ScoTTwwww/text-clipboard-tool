@@ -16,23 +16,17 @@
           <nb-card-body style="padding: 0;">
             <nb-list role="list">
               <nb-list-item role="listitem" class="ng-star-inserted active" (click)="zzzz()">
-                <nb-user class="size-medium shape-round">
+                <nb-user class="size-medium shape-round" [name]="'A1AppTest.xcodeproj'">
                   <div class="user-container">
                     <!---->
-                    <div class="user-picture initials ng-star-inserted"> CE
+                    <div class="user-picture   ng-star-inserted"> CE
                       <!---->
                       <!---->
-                      <!---->
-                    </div>
-                    <!---->
-                    <div class="info-container">
-                      <div class="user-name ng-star-inserted">Carla Espinosa</div>
-                      <!---->
-                      <div class="user-title ng-star-inserted">Nurse</div>
                       <!---->
                     </div>
                   </div>
                 </nb-user>
+
               </nb-list-item>
               <nb-list-item role="listitem" class="ng-star-inserted">
                 <nb-user class="size-medium shape-round">
@@ -80,9 +74,16 @@
       </div>
 
       <div class="row col-2">
+        <!-- <nb-card  >
+          <nb-card-header>zzzzzz</nb-card-header>
+          <nb-card-body>
+            開檔案 File -> New -> Target -> Notification Service Extension
+
+          </nb-card-body>
+        </nb-card> -->
         <div class="col-lg-6" *ngFor="let item of textList; let index = index" (click)="clickText(item.content, index)">
           <nb-card [ngClass]="{ 'active': index == currentIndex }">
-            <nb-card-header>{{ item.title }} {{ index }}</nb-card-header>
+            <nb-card-header>   {{ item.title }}</nb-card-header>
             <nb-card-body>
 
               <textarea [rows]="item.lineLength" nbinput="" fullwidth="" shape="round" placeholder="Text Area"
